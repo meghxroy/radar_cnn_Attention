@@ -22,8 +22,8 @@ backend='tensorlfow'
 set random state=42
 shuffle=True
 """
-input_dir = "inputs"
-output_dir = "outputs"
+input_dir = "GitHub Project CSVs/inputs"
+output_dir = "GitHub Project CSVs/outputs"
 num_files = 5
 
 # === Helper Function ===
