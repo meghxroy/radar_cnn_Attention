@@ -13,4 +13,13 @@ from tensorflow.keras.layers import Activation
 from tensorflow.keras import layers,models
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
-from model import 
+from model import build_model
+import os
+import joblib
+"""
+set virtual environment
+backend='tensorlfow'
+set random state=42
+shuffle=True
+"""
+
