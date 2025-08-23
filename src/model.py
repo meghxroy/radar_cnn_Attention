@@ -38,6 +38,13 @@ def call(self,inputs,training=False):
   return self.norm2(out1 + ffn_out)
 def build_model(input_shape):
   inputs=tf.keras.Input(shape=(input_shape))
-  x=layers.Conv1D(
-      
-
+  x=layers.Conv1D(64,kernel_size=7, padding='same',activation='relu')(inputs)
+  x=layers.BatchNormalization()(x)
+  x=layers.Conv1D(128,kernel_size=5, padding='same',activation='relu')(inputs)
+  x=layers.BatchNormalization()(x)   
+  x=layers.Conv1D(256,kernel_size=3, padding='same',activation='relu')(inputs)
+  x=TransformerBlock(embed_dim=256,num_heads=4,ff_dim=128)(x)
+  x=layers.Dense(256,activation='relu')(x)
+  x=layers.Dropout(0.4)(x)
+  x=layers.Dense(6834,activation='sigmoid')(x)
+return models.Model(inputs=inputs,outputs=x)
